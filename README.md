@@ -44,7 +44,12 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * warnings.filterwarnings('ignore')
 * import plotly.express as px
 * import yellowbrick
+* import DecisionTreeClassifier
+* import train_test_split
 
 4. **Extracción del archivo tratado (CSV)**
 Realizamos la extracción del archivo tratado (CSV), este ya se encuentra limpiado y normalizado con el fin de extraer las columnas que se encontraban en diccionarios, eliminar datos nullos y vacios, cambio del tipo de columnas entre otros.
 url = 'https://raw.githubusercontent.com/Starleen1996/TelecomX_Parte2_Latam_Predicci-n_Modelos/refs/heads/main/df_clientes_LATAM.csv'
+
+5. **Eliminación de Columnas irrelevantes**
+Vamos a realizar la eliminación de la columna **ID_Cliente** ya que no aporta valor al análisis o al modelo predictivo
