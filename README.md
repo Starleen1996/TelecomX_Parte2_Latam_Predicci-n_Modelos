@@ -46,6 +46,8 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * import yellowbrick
 * import DecisionTreeClassifier
 * import train_test_split
+* from sklearn.compose import make_column_transformer  # Este modulo ayuda a realizar una transformación de columnas
+* from sklearn.preprocessing import OneHotEncoder # Ayuda a realizar transformación de 1 y 0
 
 4. **Extracción del archivo tratado (CSV)**
 Realizamos la extracción del archivo tratado (CSV), este ya se encuentra limpiado y normalizado con el fin de extraer las columnas que se encontraban en diccionarios, eliminar datos nullos y vacios, cambio del tipo de columnas entre otros.
