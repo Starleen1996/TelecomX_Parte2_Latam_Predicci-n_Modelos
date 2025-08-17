@@ -71,3 +71,8 @@ En la transformación de datos, logramos que las variables categoricas queden de
 0 = Clientes que siguen en la compañia  (5174 Clientes)
 1 = Clientes que se han retirado en la compañia (1869 Clientes)
 Con el fin de que ambas clases  queden con igual proporción de los datos vamos a realizar una estratificación (balanceo) en nuestra variable objetivo o de respuesta.
+8. **Balanceo de Clases (opcional)**
+9. **Normalización o Estandarización (si es necesario)**
+10. **Correlación y Selección de Variables**
+Realizamos la correlación entre las variables númericas, entre ellas la variable objetivo (respuesta) **Churn** para verificar el resultado respecto a las variables explicativas. Para ello realizamos un filtro de las variables tipo (int64', 'float64) y posteriormente calculamos la correlación con el metodo (corr()), finalmente para tener una mejor visualización de las correlaciones, realizamos un grafico (Heatmap) con laa biblioteca Seaborn.
+
