@@ -48,6 +48,7 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * import train_test_split
 * from sklearn.compose import make_column_transformer  # Este modulo ayuda a realizar una transformación de columnas
 * from sklearn.preprocessing import OneHotEncoder # Ayuda a realizar transformación de 1 y 0
+* from sklearn.model_selection import StratifiedKFold # Aseguramos que la proporción de cada clase se mantenga
 
 4. **Extracción del archivo tratado (CSV)**
 Realizamos la extracción del archivo tratado (CSV), este ya se encuentra limpiado y normalizado con el fin de extraer las columnas que se encontraban en diccionarios, eliminar datos nullos y vacios, cambio del tipo de columnas entre otros.
@@ -64,3 +65,9 @@ y= datos['cliente_vigente']
 
 posteriormente realizamos la transformación de los datos (Encodig) utilizando la biblioteca sklearn.compose y el modulo make_columns_transformer, sklearn.preprocessing import OneHotEncoder.
 En la transformación de datos, logramos que las variables categoricas queden de forma binaria (0 y 1), esto se hace con el procesamientos de los datos en nuestros modelos de machine learning no presenten errores o sesgos.
+
+7. **Verificación de la Proporción de Cancelación (Churn)**
+ Verificando la proporción de cancelación vemos un desbalance en la variable (clientes vigentes), para ello utilizamos el metodo **datos.value_counts('cliente_vigente')**
+0 = Clientes que siguen en la compañia  (5174 Clientes)
+1 = Clientes que se han retirado en la compañia (1869 Clientes)
+Con el fin de que ambas clases  queden con igual proporción de los datos vamos a realizar una estratificación (balanceo) en nuestra variable objetivo o de respuesta.
