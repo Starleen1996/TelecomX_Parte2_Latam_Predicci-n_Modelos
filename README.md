@@ -43,6 +43,7 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * import warnings
 * warnings.filterwarnings('ignore')
 * import plotly.express as px
+* import yellowbrick
 
 4. **Extracción del archivo tratado (CSV)**
 Realizamos la extracción del archivo tratado (CSV), este ya se encuentra limpiado y normalizado con el fin de extraer las columnas que se encontraban en diccionarios, eliminar datos nullos y vacios, cambio del tipo de columnas entre otros.
