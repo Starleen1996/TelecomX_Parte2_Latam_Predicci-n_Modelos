@@ -55,3 +55,12 @@ url = 'https://raw.githubusercontent.com/Starleen1996/TelecomX_Parte2_Latam_Pred
 
 5. **Eliminación de Columnas irrelevantes**
 Vamos a realizar la eliminación de la columna **ID_Cliente** ya que no aporta valor al análisis o al modelo predictivo
+
+6. **Realizar el Encoding**
+En este paso realizamos la transformación de las variables explicativas, excluyendo la variable de respuesta. para este paso primero hacemos la separación de las variables explicativas y la variable de respuesta.
+
+X = datos.drop('cliente_vigente', axis=1)
+y= datos['cliente_vigente']
+
+posteriormente realizamos la transformación de los datos (Encodig) utilizando la biblioteca sklearn.compose y el modulo make_columns_transformer, sklearn.preprocessing import OneHotEncoder.
+En la transformación de datos, logramos que las variables categoricas queden de forma binaria (0 y 1), esto se hace con el procesamientos de los datos en nuestros modelos de machine learning no presenten errores o sesgos.
