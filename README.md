@@ -75,4 +75,26 @@ Con el fin de que ambas clases  queden con igual proporción de los datos vamos 
 9. **Normalización o Estandarización (si es necesario)**
 10. **Correlación y Selección de Variables**
 Realizamos la correlación entre las variables númericas, entre ellas la variable objetivo (respuesta) **Churn** para verificar el resultado respecto a las variables explicativas. Para ello realizamos un filtro de las variables tipo (int64', 'float64) y posteriormente calculamos la correlación con el metodo (corr()), finalmente para tener una mejor visualización de las correlaciones, realizamos un grafico (Heatmap) con laa biblioteca Seaborn.
+11. **Análisis de Correlación:**
 
+Número de meses_contrato vs total_pagado_cliente: 0.825
+Muy fuerte correlación positiva.
+Significa que cuanto más meses tiene el cliente en contrato, mayor es el total pagado.
+Es esperable: más tiempo = más facturación.
+    
+Número de meses_contrato vs cliente_vigente: -0.352
+Correlación negativa moderada.
+Sugiere que a mayor número de meses en contrato, hay cierta tendencia a que el cliente ya no esté vigente (abandone el servicio).
+No es muy fuerte, pero hay relación.
+
+total_pagado_cliente vs cliente_vigente: -0.199
+Correlación negativa débil.
+Indica que los clientes que han pagado más, tienden ligeramente a no estar vigentes, pero la relación es débil (casi cercana a 0).
+
+**En Resumen:**
+
+La variable más fuerte es:
+#_meses_contrato ↔ total_pagado_cliente (0.825).
+Existe un patrón de rotación de clientes:
+mientras más tiempo y más pagan, hay una ligera probabilidad de que ya no estén vigentes (correlaciones negativas con cliente_vigente).
+Pero esas correlaciones negativas no son lo suficientemente fuertes como para sacar conclusiones absolutas; se debería complementar con otros análisis.
