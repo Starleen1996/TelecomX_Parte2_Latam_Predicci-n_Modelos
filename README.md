@@ -188,3 +188,67 @@ El modelo ahora supera claramente al baseline y tiene un buen equilibrio entre e
 Aún se podría explorar más hiperparámetros (criterio de división, número mínimo de muestras por hoja, etc.), pero ya se evidencia un avance significativo.
 
 ## Modelo Regresión Logístico
+**Resumen del Modelo Regresión Logística - Sin Balanceo**
+📊 Resultados obtenidos
+
+Accuracy (Exactitud) en prueba (X_test, y_test) Esto significa que, de todos los clientes en tu conjunto de prueba, el modelo predice correctamente si se quedan o se van en un 79.7% de los casos.
+
+Accuracy (Exactitud) en entrenamiento (X_train, y_train) En los datos con los que el modelo aprendió, acierta en un 80.9% de los casos.
+
+🔎 **Interpretación**
+
+Generalización: Los resultados de entrenamiento (80.9%) y prueba (79.7%) son muy similares → el modelo no está sobreajustado (no memorizó los datos) y generaliza bien a nuevos clientes.
+
+Buen desempeño inicial: Acertar casi en 8 de cada 10 clientes es un desempeño razonable para un primer modelo.
+
+Limitaciones de Accuracy: En churn, muchas veces el problema está desbalanceado (es decir, hay más clientes que permanecen que los que se retiran). El accuracy puede ser engañoso, porque el modelo podría estar prediciendo bien a los que permanecen y fallando en los que se van, que suelen ser los más importantes para la empresa.
+
+✅ **En conclusión:** Tu modelo logra ~80% de aciertos y generaliza bien, lo cual es un buen punto de partida. El siguiente paso es profundizar en métricas como recall para clientes que abandonan, ya que para la empresa es más costoso no detectar a un cliente que se va que equivocarse en un cliente que se queda.
+
+1.**Matriz de confusión**
+
+[[1382 170]
+
+[ 258 303]]
+
+1382 (Verdaderos Negativos, VN): Clientes que realmente NO se fueron (0) y el modelo predijo correctamente que se quedan.
+
+170 (Falsos Positivos, FP): Clientes que el modelo predijo que se iban, pero en realidad se quedaron.
+
+258 (Falsos Negativos, FN): Clientes que realmente se fueron, pero el modelo dijo que se quedaban.
+
+303 (Verdaderos Positivos, VP): Clientes que realmente se fueron y el modelo lo predijo correctamente.
+
+📊 **2. Reporte de clasificación**
+
+Para clase 0 (clientes que permanecen):
+
+Precision = 0.84: El 84% de los que predijo como "no se van" realmente no se fueron.
+
+Recall = 0.89: Detecta bien a los que se quedan (89%).
+
+F1-Score = 0.87: Buen balance entre precisión y recall. 📌 El modelo es bastante sólido para identificar clientes que se quedan.
+
+Para clase 1 (clientes que se van = churn):
+
+Precision = 0.64: De todos los que el modelo predijo que se iban, solo el 64% realmente se fue.
+
+Recall = 0.54: Solo detecta al 54% de los clientes que efectivamente se fueron.
+
+F1-Score = 0.59: Débil en comparación con la clase 0. 📌 Aquí está el problema: el modelo no está capturando bien a los clientes que hacen churn.
+
+**📊3. Métricas generales**
+
+Accuracy (exactitud) = 0.80: El modelo acierta en el 80% de los casos. ⚠️ Pero este número está sesgado porque hay muchos más clientes que se quedan (clase 0) que los que se van (clase 1).
+
+Macro avg (0.73 en F1): Promedio simple entre ambas clases (muestra que el modelo es más débil en la clase 1).
+
+Weighted avg (0.79 en F1): Promedio ponderado según la cantidad de ejemplos, está dominado por la clase 0.
+
+**Conclusión para la empresa de telecomunicaciones:**
+
+El modelo es bueno detectando quiénes se quedan (clase 0).
+
+Pero es regular detectando quiénes se van (clase 1, churn) → solo identifica al 54% de ellos.
+
+En términos de negocio: 🔹 Puedes confiar bastante en los clientes que el modelo dice que se quedarán. 🔹 Pero deberías mejorar la sensibilidad (recall) para no perder clientes que realmente se van.
