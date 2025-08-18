@@ -22,7 +22,7 @@ La intención de realizar el proyecto es establecer modelos de predicción de **
 * Evaluación de los Modelos
 * Interpretación y Conclusiones
 * Análisis de la Importancia de las Variables
-* Conclusión
+
 
 1. **Descripción del Proyecto**
 La compañia quiere anticiparse a la problematica de cancelación de servicios, para ello debemos analizar los datos historicos sobre nuestros clientes y servicios, posteriormente debemos establecer modelos de machine learning  para comparar su efectividad en la predicción de clientes (churn). Para ello vamos a establecer modelos como: **Baseline**, **Arbol de Decisiones**, **Random Forest** y comparar su rendimiento.
@@ -262,3 +262,68 @@ El modelo ya mejoró bastante el recall de la clase 1 (79%) gracias a SMOTE ✅.
 Esto significa que ahora detecta a la mayoría de los clientes que abandonan (lo que pediste en el punto 1).
 
 Pero hay un costo: la precisión para clase 1 bajó a 0.51, lo que implica más falsos positivos (clientes que el modelo cree que se van, pero en realidad no).
+
+**Modelo KNN - SIN BALANCEO**
+El algoritmo KNN se basa en el cálculo de la distancia entre los registros de la base de datos y busca elementos que estén cerca unos de otros (vecinos) para tomar la decisión de clasificación.
+
+Debido a que utiliza cálculos de distancia, este algoritmo está influenciado por la escala de las variables, y por eso es necesario realizar una transformación en los datos antes de utilizar este método.
+
+**2. Reporte de clasificación**
+
+Para clase 0 (clientes que permanecen):
+
+Precision = 0.83: El 83% de los que predijo como "no se van" realmente no se fueron.
+
+Recall = 0.84: Detecta bien a los que se quedan (84%).
+
+F1-Score = 0.83: Buen balance entre precisión y recall. 📌 El modelo es bastante sólido para identificar clientes que se quedan.
+
+Para clase 1 (clientes que se van = churn):
+
+Precision = 0.53: De todos los que el modelo predijo que se iban, solo el 53% realmente se fue.
+
+Recall = 0.51: Solo detecta al 51% de los clientes que efectivamente se fueron.
+
+F1-Score = 0.52: Débil en comparación con la clase 0. 📌 Aquí está el problema: el modelo no está capturando bien a los clientes que hacen churn.
+
+**Conclusiones Exactitud de los Modelos:**
+Resultados reportados:
+
+Modelo Dummy (baseline): 0.7345
+
+Árbol de Decisiones: 0.7931
+
+KNN: 0.7515
+
+Regresión Logística (balanceada): 0.7463
+
+🔎 **Conclusiones principales**:
+
+Comparación con el modelo Dummy
+
+El modelo Dummy sirve como referencia (predice lo más frecuente o al azar).
+
+Todos los modelos superan la exactitud del Dummy, lo cual indica que sí están aprendiendo patrones reales en los datos.
+
+Árbol de Decisiones → Mejor exactitud (0.7931)
+
+Es el modelo con mejor desempeño global en términos de exactitud.
+
+Sugiere que los datos pueden tener relaciones no lineales y jerárquicas que el árbol captura mejor que KNN o la regresión logística.
+
+KNN (0.7515) vs. Regresión Logística (0.7463 balanceada)
+
+Ambos tienen un rendimiento similar, aunque el KNN ligeramente mejor.
+
+El hecho de que la Regresión Logística balanceada esté cerca al KNN indica que el desbalance de clases sí afecta al dataset, y balancear ayuda a no perder sensibilidad hacia la clase minoritaria (churn).
+
+Importancia del balanceo
+
+Aunque la regresión balanceada no tiene la mayor exactitud, su fortaleza está en mejorar el recall de los clientes churn (clase 1).
+
+La exactitud por sí sola puede ser engañosa en datasets desbalanceados: un modelo puede tener buena exactitud pero ser malo prediciendo churn.
+
+📝 **Conclusión final exactitud**:
+
+El modelo Dummy alcanza una exactitud del 73.4%, lo que representa nuestra línea base. Todos los modelos superan este valor, confirmando que aprenden patrones útiles. El Árbol de Decisiones se posiciona como el mejor clasificador en términos de exactitud (79.3%), lo que indica que logra capturar relaciones complejas en los datos. Por su parte, KNN (75.1%) y la Regresión Logística balanceada (74.6%) tienen un rendimiento similar, aunque la regresión balanceada aporta la ventaja de mejorar la detección de clientes en riesgo de churn gracias al ajuste frente al desbalance de clases. En conclusión, el Árbol de Decisiones es el más preciso globalmente, pero la Regresión Logística balanceada puede ser preferida si el objetivo principal es mejorar la sensibilidad en la predicción de clientes que se van.
+
