@@ -252,3 +252,12 @@ El modelo es bueno detectando quiénes se quedan (clase 0).
 Pero es regular detectando quiénes se van (clase 1, churn) → solo identifica al 54% de ellos.
 
 En términos de negocio: 🔹 Puedes confiar bastante en los clientes que el modelo dice que se quedarán. 🔹 Pero deberías mejorar la sensibilidad (recall) para no perder clientes que realmente se van.
+
+## Modelo Regresión Logístico con Balanceo
+🔍**Interpretación**
+
+El modelo ya mejoró bastante el recall de la clase 1 (79%) gracias a SMOTE ✅.
+
+Esto significa que ahora detecta a la mayoría de los clientes que abandonan (lo que pediste en el punto 1).
+
+Pero hay un costo: la precisión para clase 1 bajó a 0.51, lo que implica más falsos positivos (clientes que el modelo cree que se van, pero en realidad no).
