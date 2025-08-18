@@ -56,6 +56,7 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * from sklearn.metrics import accuracy_score, confusion_matrix
 * from imblearn.over_sampling import SMOTE
 * from imblearn.pipeline import Pipeline as ImbPipeline
+* from sklearn.dummy import DummyClassifier
 
 
 4. **Extracción del archivo tratado (CSV)**
@@ -144,7 +145,17 @@ Realizamos la separación de los datos para entrenamiento y prueba, lo recomenda
 
 14 - 15 **Creación y Evaluación de modelos**
 
-**Modelo Regresión Logístico**
+## Modelo de referencia (BaseLine)
+Modelo Dummy
+Un modelo base es muy importante para definir un criterio de comparación para modelos más complejos. En esta etapa, crea un modelo base con el DummyClassifier y encuentra la tasa de acierto con el método score.
+
+El modelo más simple de clasificar los datos es simplemente utilizar un algoritmo que asigna todas las clasificaciones a la clase que tiene mayor frecuencia. Este algoritmo sirve como un criterio de comparación para identificar si los otros modelos tienen un rendimiento mejor que la clasificación más simple posible.
+
+**Modelo Baseline (DummyClassifier):**
+#Obtuvo un score de 0.7345 aproximadamente.
+#Este modelo sirve únicamente como punto de referencia, ya que no aprende patrones reales de los datos, sino que sigue una estrategia trivial (por ejemplo, predecir siempre la clase mayoritaria).
+
+## Modelo Regresión Logístico
 Uno de los modelos utilizados fue el de regresión logística, donde se evaluaron las variables explicativas y variables de respuesta.
 
 **Resultados principales:**
@@ -200,3 +211,35 @@ El accuracy general (0.77) es aceptable, pero se debe analizar con cuidado dado 
 La Regresión Logística funciona como un modelo base que da buena interpretabilidad, pero puede que no capture relaciones complejas en tus datos.
 
 El hecho de que el recall en "Vigente" sea mayor que la precisión significa que el modelo prefiere arriesgarse a clasificar clientes como Vigentes (aunque se equivoque), lo cual puede ser bueno si tu interés es detectar clientes que se mantendrán activos y no perderlos.
+
+## Modelo Árbol de Decisión
+Para la clasificación de clientes (Churn), vamos a usar el modelo **+Árbol de Decisiones** ya que es uno de los modelos recomendados para predecir datos y clasificarlos.
+Justificación Normalización: Para este modelo aunque no es necesario normalizar nuestros datos, decidí hacerlo ya que en el análisis de correlación no pude determinar una fuerza positiva o negativa sobre la variable objetivo (churn).
+
+El modelo de árbol de decisión es muy utilizado debido a su alta explicabilidad y procesamiento rápido, manteniendo un rendimiento bastante interesante.
+Se basa en decisiones simples tomadas por el algoritmo, separando los datos mediante comparaciones de menor y mayor en los valores de las columnas de la base de datos.
+
+**Modelo_arbol = DecisionTreeClassifier(max_depth=5, random_state=42)**
+Evaluamos el modelo con datos de prueba con una profundidad de 5 y estado de aleatoriedad de 42
+modelo_arbol.fit(X_train, y_train)
+modelo_arbol.score(X_test,y_test)
+
+**Score en datos de prueba (X_test): 0.7931**
+
+**Score en datos de entrenamiento (X_train): 0.8079**
+
+**📊 Resumen**
+
+Mejora frente al baseline: Antes, tu Árbol sin restricciones estaba cerca de 0.73 en test, ahora subió a ~0.79, lo cual indica que limitar la profundidad ayudó al modelo a generalizar mejor.
+
+Generalización adecuada: La diferencia entre entrenamiento (0.8079) y prueba (0.7931) es muy pequeña (~0.015). 👉 Esto es una señal positiva: el modelo no está sobreajustado y mantiene un desempeño bastante estable en datos no vistos.
+
+Impacto del hiperparámetro max_depth: Al limitar la profundidad a 5, el modelo evitó memorizar los datos de entrenamiento y logró un balance entre sesgo y varianza.
+
+**✅ Conclusión**
+
+El ajuste de profundidad mejoró la capacidad de generalización del Árbol de Decisión.
+
+El modelo ahora supera claramente al baseline y tiene un buen equilibrio entre entrenamiento y prueba.
+
+Aún se podría explorar más hiperparámetros (criterio de división, número mínimo de muestras por hoja, etc.), pero ya se evidencia un avance significativo.
