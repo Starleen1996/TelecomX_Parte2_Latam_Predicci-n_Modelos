@@ -365,6 +365,37 @@ Esto confirma que aplicar técnicas de balanceo de clases es clave para este pro
 ![Gráfico de exactitud](exactitud_modelos.png)
 ![Gráfico de Recall](recall_modelos.png)
 
+16. **Análisis de la Importancia de las Variables:**
+
+**Regresión Logística Balanceada:**
+La ventaja de este modelo es que es interpretable:
+
+Cada variable tiene un coeficiente (peso) → indica cómo cambia la probabilidad de cancelación.
+
+El signo del coeficiente:
+
+(+) → aumenta la probabilidad de churn.
+
+(-) → reduce la probabilidad de churn.
+
+La magnitud absoluta → indica la importancia relativa de la variable.
+
+**KNN:**
+KNN no tiene coeficientes, pero puedes investigar las variables con:
+
+Análisis de distancias → ver cuáles variables más contribuyen a diferenciar clientes que cancelan vs. los que no.
+
+Feature importance vía permutación:
+
+Se mide cómo cambia el desempeño del modelo si "rompes" (permutas) una variable.
+
+Si el recall baja mucho, esa variable es clave.
+
+**Árbol de Decisiones:**
+Aquí es mucho más visual:
+El árbol aprende umbrales de decisión (ejemplo: "si el cliente tiene más de 6 meses → menos probabilidad de churn").
+Puedes ver la importancia de variables directamente del modelo.
+
 ## Agradecimientos 🤝
 
 Quiero agradecer a Oracle y Alura LATAM por proporcionar las bases y el material necesarios para la realización de este proyecto, y por su alianza que hace posible este programa de capacitación para el desarrollo del futuro en tecnología.
