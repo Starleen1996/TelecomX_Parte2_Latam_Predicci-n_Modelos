@@ -75,7 +75,7 @@ Con el fin de que ambas clases  queden con igual proporción de los datos vamos 
 9. **Normalización o Estandarización (si es necesario)**
 10. **Correlación y Selección de Variables**
 Realizamos la correlación entre las variables númericas, entre ellas la variable objetivo (respuesta) **Churn** para verificar el resultado respecto a las variables explicativas. Para ello realizamos un filtro de las variables tipo (int64', 'float64) y posteriormente calculamos la correlación con el metodo (corr()), finalmente para tener una mejor visualización de las correlaciones, realizamos un grafico (Heatmap) con laa biblioteca Seaborn.
-11. **Análisis de Correlación:**
+11. **Análisis Dirijido de Correlación:**
 
 Número de meses_contrato vs total_pagado_cliente: 0.825
 Muy fuerte correlación positiva.
@@ -98,3 +98,35 @@ La variable más fuerte es:
 Existe un patrón de rotación de clientes:
 mientras más tiempo y más pagan, hay una ligera probabilidad de que ya no estén vigentes (correlaciones negativas con cliente_vigente).
 Pero esas correlaciones negativas no son lo suficientemente fuertes como para sacar conclusiones absolutas; se debería complementar con otros análisis.
+
+12. **Modelado Predictivo:**
+    
+Modelos recomendados para este caso
+
+* Regresión Logística:
+
+Punto de partida clásico para problemas de clasificación binaria.
+
+Te da interpretabilidad (puedes ver qué variable aumenta o disminuye la probabilidad de estar vigente).
+
+Puede verse afectada por la multicolinealidad entre meses_contrato y total_pagado_cliente.
+
+* Árboles de Decisión:
+
+No tienen problema con colinealidad.
+
+Fácil de interpretar en forma de reglas (ej: "si meses_contrato > X entonces...").
+
+* Random Forest o Gradient Boosting (XGBoost, LightGBM, CatBoost):
+
+Muy recomendados cuando quieres mayor precisión.
+
+Manejan bien relaciones no lineales y colinealidad.
+
+Random Forest → bueno para empezar.
+
+XGBoost/LightGBM → mejor rendimiento si tienes más datos.
+
+* Redes Neuronales (opcional, si tienes muchos datos):
+
+Podrían aplicarse, pero en un dataset pequeño o con pocas variables no aporta mucho más que un modelo de boosting.
