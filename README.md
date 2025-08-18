@@ -49,6 +49,10 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * from sklearn.compose import make_column_transformer  # Este modulo ayuda a realizar una transformación de columnas
 * from sklearn.preprocessing import OneHotEncoder # Ayuda a realizar transformación de 1 y 0
 * from sklearn.model_selection import StratifiedKFold # Aseguramos que la proporción de cada clase se mantenga
+* from sklearn.preprocessing import StandardScaler
+* from sklearn.linear_model import LogisticRegression
+* from sklearn.pipeline import Pipeline
+* from sklearn.metrics import classification_report, confusion_matrix
 
 4. **Extracción del archivo tratado (CSV)**
 Realizamos la extracción del archivo tratado (CSV), este ya se encuentra limpiado y normalizado con el fin de extraer las columnas que se encontraban en diccionarios, eliminar datos nullos y vacios, cambio del tipo de columnas entre otros.
@@ -129,4 +133,7 @@ XGBoost/LightGBM → mejor rendimiento si tienes más datos.
 
 * Redes Neuronales (opcional, si tienes muchos datos):
 
-Podrían aplicarse, pero en un dataset pequeño o con pocas variables no aporta mucho más que un modelo de boosting.
+Podrían aplicarse, pero en un dataset pequeño o con pocas variables no aporta mucho más que un modelo de boosting.+
+
+13. **Separación de Datos**
+Realizamos la separación de los datos para entrenamiento y prueba, lo recomendable es usar el 70/80 porciento para entrenamiento y 30/20 porciento para probar el modelo, para ellos utilizamos el modulo import train_test_split de la biblioteca sklearn.modelselection.
