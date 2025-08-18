@@ -380,6 +380,8 @@ El signo del coeficiente:
 
 La magnitud absoluta → indica la importancia relativa de la variable.
 
+![Importancia Coeficientes Regresión Logística](importancia_regresion_logistica.png)
+
 **KNN:**
 KNN no tiene coeficientes, pero puedes investigar las variables con:
 
@@ -391,10 +393,15 @@ Se mide cómo cambia el desempeño del modelo si "rompes" (permutas) una variabl
 
 Si el recall baja mucho, esa variable es clave.
 
+![Importancia Análisis de Distancias (permutación) KNN](importancia_knn.png)
+
+
 **Árbol de Decisiones:**
 Aquí es mucho más visual:
 El árbol aprende umbrales de decisión (ejemplo: "si el cliente tiene más de 6 meses → menos probabilidad de churn").
 Puedes ver la importancia de variables directamente del modelo.
+
+![Importancia Variables Modelo Árbol de Decisiones](importancia_arbol.png)
 
 ## Agradecimientos 🤝
 
