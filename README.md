@@ -57,6 +57,7 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * from imblearn.over_sampling import SMOTE
 * from imblearn.pipeline import Pipeline as ImbPipeline
 * from sklearn.dummy import DummyClassifier
+* from sklearn.neighbors import KNeighborsClassifier
 
 
 4. **Extracción del archivo tratado (CSV)**
