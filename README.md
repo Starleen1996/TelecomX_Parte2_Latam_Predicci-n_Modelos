@@ -53,6 +53,10 @@ Para el desarrollo del proyecto realizamos el uso de diferentes bibliotecas Pyth
 * from sklearn.linear_model import LogisticRegression
 * from sklearn.pipeline import Pipeline
 * from sklearn.metrics import classification_report, confusion_matrix
+* from sklearn.metrics import accuracy_score, confusion_matrix
+* from imblearn.over_sampling import SMOTE
+* from imblearn.pipeline import Pipeline as ImbPipeline
+
 
 4. **Extracción del archivo tratado (CSV)**
 Realizamos la extracción del archivo tratado (CSV), este ya se encuentra limpiado y normalizado con el fin de extraer las columnas que se encontraban en diccionarios, eliminar datos nullos y vacios, cambio del tipo de columnas entre otros.
@@ -137,3 +141,62 @@ Podrían aplicarse, pero en un dataset pequeño o con pocas variables no aporta 
 
 13. **Separación de Datos**
 Realizamos la separación de los datos para entrenamiento y prueba, lo recomendable es usar el 70/80 porciento para entrenamiento y 30/20 porciento para probar el modelo, para ellos utilizamos el modulo import train_test_split de la biblioteca sklearn.modelselection.
+
+14 - 15 **Creación y Evaluación de modelos**
+
+**Modelo Regresión Logístico**
+Uno de los modelos utilizados fue el de regresión logística, donde se evaluaron las variables explicativas y variables de respuesta.
+
+**Resultados principales:**
+
+Exactitud (Accuracy):
+
+Entrenamiento: 0.95
+
+Prueba: 0.77
+
+➝ El modelo generaliza relativamente bien, aunque hay una caída de 0.95 → 0.77, lo que indica cierto sobreajuste (el modelo aprende muy bien los datos de entrenamiento, pero pierde rendimiento con los de prueba).
+
+Reporte de Clasificación:
+
+**Clase 0 (No Vigente):**
+
+Precisión: 0.87
+
+Recall: 0.81
+
+F1-score: 0.84
+
+➝ El modelo identifica bastante bien a los clientes No Vigentes, con buena precisión y recall.
+
+**Clase 1 (Vigente):**
+
+Precisión: 0.56
+
+Recall: 0.66
+
+F1-score: 0.61
+
+➝ El desempeño es más bajo en la clase Vigente, aunque el recall de 0.66 muestra que el modelo logra recuperar 2 de cada 3 clientes vigentes. La precisión baja (0.56) indica que se generan falsos positivos (se predicen vigentes clientes que no lo son).
+
+**Matriz de Confusión:**
+
+1258 clientes No Vigentes bien clasificados.
+
+294 No Vigentes mal clasificados como Vigentes.
+
+188 Vigentes mal clasificados como No Vigentes.
+
+373 Vigentes bien clasificados.
+
+➝ El modelo tiende a estar más inclinado hacia predecir No Vigentes, aunque SMOTE ayudó a balancear un poco (sin SMOTE seguramente la clase Vigente habría tenido un recall aún más bajo).
+
+🔎 Conclusiones sobre el modelo:
+
+El balanceo con SMOTE ayudó a mejorar el recall de la clase minoritaria (Vigente), aunque todavía el rendimiento es desigual entre clases.
+
+El accuracy general (0.77) es aceptable, pero se debe analizar con cuidado dado el desbalance original: el modelo sigue siendo mejor prediciendo la clase mayoritaria.
+
+La Regresión Logística funciona como un modelo base que da buena interpretabilidad, pero puede que no capture relaciones complejas en tus datos.
+
+El hecho de que el recall en "Vigente" sea mayor que la precisión significa que el modelo prefiere arriesgarse a clasificar clientes como Vigentes (aunque se equivoque), lo cual puede ser bueno si tu interés es detectar clientes que se mantendrán activos y no perderlos.
