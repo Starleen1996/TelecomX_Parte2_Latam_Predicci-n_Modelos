@@ -155,63 +155,6 @@ El modelo más simple de clasificar los datos es simplemente utilizar un algorit
 #Obtuvo un score de 0.7345 aproximadamente.
 #Este modelo sirve únicamente como punto de referencia, ya que no aprende patrones reales de los datos, sino que sigue una estrategia trivial (por ejemplo, predecir siempre la clase mayoritaria).
 
-## Modelo Regresión Logístico
-Uno de los modelos utilizados fue el de regresión logística, donde se evaluaron las variables explicativas y variables de respuesta.
-
-**Resultados principales:**
-
-Exactitud (Accuracy):
-
-Entrenamiento: 0.95
-
-Prueba: 0.77
-
-➝ El modelo generaliza relativamente bien, aunque hay una caída de 0.95 → 0.77, lo que indica cierto sobreajuste (el modelo aprende muy bien los datos de entrenamiento, pero pierde rendimiento con los de prueba).
-
-Reporte de Clasificación:
-
-**Clase 0 (No Vigente):**
-
-Precisión: 0.87
-
-Recall: 0.81
-
-F1-score: 0.84
-
-➝ El modelo identifica bastante bien a los clientes No Vigentes, con buena precisión y recall.
-
-**Clase 1 (Vigente):**
-
-Precisión: 0.56
-
-Recall: 0.66
-
-F1-score: 0.61
-
-➝ El desempeño es más bajo en la clase Vigente, aunque el recall de 0.66 muestra que el modelo logra recuperar 2 de cada 3 clientes vigentes. La precisión baja (0.56) indica que se generan falsos positivos (se predicen vigentes clientes que no lo son).
-
-**Matriz de Confusión:**
-
-1258 clientes No Vigentes bien clasificados.
-
-294 No Vigentes mal clasificados como Vigentes.
-
-188 Vigentes mal clasificados como No Vigentes.
-
-373 Vigentes bien clasificados.
-
-➝ El modelo tiende a estar más inclinado hacia predecir No Vigentes, aunque SMOTE ayudó a balancear un poco (sin SMOTE seguramente la clase Vigente habría tenido un recall aún más bajo).
-
-🔎 Conclusiones sobre el modelo:
-
-El balanceo con SMOTE ayudó a mejorar el recall de la clase minoritaria (Vigente), aunque todavía el rendimiento es desigual entre clases.
-
-El accuracy general (0.77) es aceptable, pero se debe analizar con cuidado dado el desbalance original: el modelo sigue siendo mejor prediciendo la clase mayoritaria.
-
-La Regresión Logística funciona como un modelo base que da buena interpretabilidad, pero puede que no capture relaciones complejas en tus datos.
-
-El hecho de que el recall en "Vigente" sea mayor que la precisión significa que el modelo prefiere arriesgarse a clasificar clientes como Vigentes (aunque se equivoque), lo cual puede ser bueno si tu interés es detectar clientes que se mantendrán activos y no perderlos.
-
 ## Modelo Árbol de Decisión
 Para la clasificación de clientes (Churn), vamos a usar el modelo **+Árbol de Decisiones** ya que es uno de los modelos recomendados para predecir datos y clasificarlos.
 Justificación Normalización: Para este modelo aunque no es necesario normalizar nuestros datos, decidí hacerlo ya que en el análisis de correlación no pude determinar una fuerza positiva o negativa sobre la variable objetivo (churn).
@@ -243,3 +186,5 @@ El ajuste de profundidad mejoró la capacidad de generalización del Árbol de D
 El modelo ahora supera claramente al baseline y tiene un buen equilibrio entre entrenamiento y prueba.
 
 Aún se podría explorar más hiperparámetros (criterio de división, número mínimo de muestras por hoja, etc.), pero ya se evidencia un avance significativo.
+
+## Modelo Regresión Logístico
