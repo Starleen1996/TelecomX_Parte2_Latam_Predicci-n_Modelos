@@ -360,3 +360,7 @@ Esto confirma que aplicar técnicas de balanceo de clases es clave para este pro
 
 ✅ Conclusión general: El modelo de regresión logística balanceado es el más adecuado si el objetivo del negocio es maximizar la detección de clientes en riesgo de abandono, ya que ofrece un recall muy superior. En contraste, árbol de decisiones y KNN se comportan de forma similar pero insuficiente, y el modelo dummy es completamente ineficaz.
 
+**Grafico Exactitud Modelos:**
+
+![Gráfico de exactitud](exactitud_modelos.png)
+![Gráfico de Recall](recall_modelos.png)
