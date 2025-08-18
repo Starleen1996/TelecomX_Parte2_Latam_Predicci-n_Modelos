@@ -365,6 +365,14 @@ Esto confirma que aplicar técnicas de balanceo de clases es clave para este pro
 ![Gráfico de exactitud](exactitud_modelos.png)
 ![Gráfico de Recall](recall_modelos.png)
 
+## Agradecimientos 🤝
+
+Quiero agradecer a Oracle y Alura LATAM por proporcionar las bases y el material necesarios para la realización de este proyecto, y por su alianza que hace posible este programa de capacitación para el desarrollo del futuro en tecnología.
+
+![Alura LATAM](https://github.com/user-attachments/assets/92a155ab-bcbb-41c6-8bbc-a0e8f552eb0f) ![Oracle](https://github.com/user-attachments/assets/f399257d-d637-44be-809e-4bac2232fe25)
+
+![ONE](https://github.com/user-attachments/assets/368ff23a-e3f2-4f08-a987-0f736996779c)
+
 **Desarrollador del Proyecto:**
 Realizado por: Starleen Gaviria Medina, Estudiante de Alura Latam, Ciencia de datos.
 
