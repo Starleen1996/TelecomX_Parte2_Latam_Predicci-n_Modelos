@@ -364,3 +364,8 @@ Esto confirma que aplicar técnicas de balanceo de clases es clave para este pro
 
 ![Gráfico de exactitud](exactitud_modelos.png)
 ![Gráfico de Recall](recall_modelos.png)
+
+**Desarrollador del Proyecto:**
+Realizado por: Starleen Gaviria Medina, Estudiante de Alura Latam, Ciencia de datos.
+
+www.linkedin.com/in/starleen-gaviria-sig
