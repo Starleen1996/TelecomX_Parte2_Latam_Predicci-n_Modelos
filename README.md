@@ -286,7 +286,7 @@ Recall = 0.51: Solo detecta al 51% de los clientes que efectivamente se fueron.
 
 F1-Score = 0.52: Débil en comparación con la clase 0. 📌 Aquí está el problema: el modelo no está capturando bien a los clientes que hacen churn.
 
-**Conclusiones Exactitud de los Modelos:**
+# Conclusiones Exactitud de los Modelos:
 Resultados reportados:
 
 Modelo Dummy (baseline): 0.7345
@@ -326,4 +326,37 @@ La exactitud por sí sola puede ser engañosa en datasets desbalanceados: un mod
 📝 **Conclusión final exactitud**:
 
 El modelo Dummy alcanza una exactitud del 73.4%, lo que representa nuestra línea base. Todos los modelos superan este valor, confirmando que aprenden patrones útiles. El Árbol de Decisiones se posiciona como el mejor clasificador en términos de exactitud (79.3%), lo que indica que logra capturar relaciones complejas en los datos. Por su parte, KNN (75.1%) y la Regresión Logística balanceada (74.6%) tienen un rendimiento similar, aunque la regresión balanceada aporta la ventaja de mejorar la detección de clientes en riesgo de churn gracias al ajuste frente al desbalance de clases. En conclusión, el Árbol de Decisiones es el más preciso globalmente, pero la Regresión Logística balanceada puede ser preferida si el objetivo principal es mejorar la sensibilidad en la predicción de clientes que se van.
+
+# Conclusiones del Recall
+📌 Conclusiones del recall por modelo:
+
+**Modelo Dummy (0.0000)**
+
+El modelo no logra identificar ningún cliente que hace churn (1).
+
+Esto confirma que el modelo dummy no es útil como predictor, solo sirve como referencia de base.
+
+**Árbol de Decisiones (0.5294)**
+
+Logra identificar un poco más de la mitad de los clientes que hacen churn.
+
+Aunque es un avance respecto al dummy, aún deja escapar casi la mitad de los clientes que realmente abandonan.
+
+Puede estar sobreajustando o priorizando otras métricas (como exactitud) en lugar de la sensibilidad.
+
+**KNN (0.5080)**
+
+Tiene un rendimiento muy similar al árbol de decisiones en términos de recall.
+
+Esto sugiere que KNN tampoco logra capturar con suficiente eficacia los casos minoritarios de churn, posiblemente por la distribución de clases desbalanceada.
+
+**Regresión Logística Balanceada (0.7914)**
+
+Es el modelo que mejor logra identificar a los clientes que abandonan.
+
+Con casi un 80% de recall, se convierte en el más prometedor si la prioridad es detectar churn, aunque podría sacrificar algo de precisión en las predicciones.
+
+Esto confirma que aplicar técnicas de balanceo de clases es clave para este problema.
+
+✅ Conclusión general: El modelo de regresión logística balanceado es el más adecuado si el objetivo del negocio es maximizar la detección de clientes en riesgo de abandono, ya que ofrece un recall muy superior. En contraste, árbol de decisiones y KNN se comportan de forma similar pero insuficiente, y el modelo dummy es completamente ineficaz.
 
